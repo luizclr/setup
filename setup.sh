@@ -1,6 +1,9 @@
 apt-get update
 apt-get upgrade -y
 
+# exiftool
+spt-get install exiftool -y
+
 # curl
 apt-get install curl -y
 
