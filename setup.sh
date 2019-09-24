@@ -2,7 +2,7 @@ apt-get update
 apt-get upgrade -y
 
 # exiftool
-spt-get install exiftool -y
+apt-get install exiftool -y
 
 # curl
 apt-get install curl -y
@@ -16,36 +16,39 @@ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key ad
 apt-get update
 apt-get install google-chrome-stable -y
 
+# snap
+apt get install snapd -y
+
 # snap apps
 snapApps=(
-    'code --classic' 
-    'spotify' 
-    'discord' 
+    'code --classic'
+    'spotify'
+    'discord'
     'slack --classic'
 )
 
 for i in "${snapApps[@]}"; do
-  snap instal $i
+    snap install $i
 done
 
 vscodeExtensions=(
-    'dbaeumer.vscode-eslint' 
-    'MS-vsliveshare.vsliveshare' 
-    'esbenp.prettier-vscode' 
-    'shd101wyy.markdown-preview-enhanced' 
-    'DavidAnson.vscode-markdownlint' 
-    'EditorConfig.EditorConfig' 
-    'Syler.sass-indented' 
-    'msjsdiag.vscode-react-native' 
-    'burkeholland.simple-react-snippets' 
-    'ms-vscode.atom-keybindings' 
-    'anseki.vscode-color' 
-    'shakram02.bash-beautify' 
+    'dbaeumer.vscode-eslint'
+    'MS-vsliveshare.vsliveshare'
+    'esbenp.prettier-vscode'
+    'shd101wyy.markdown-preview-enhanced'
+    'DavidAnson.vscode-markdownlint'
+    'EditorConfig.EditorConfig'
+    'Syler.sass-indented'
+    'msjsdiag.vscode-react-native'
+    'burkeholland.simple-react-snippets'
+    'ms-vscode.atom-keybindings'
+    'anseki.vscode-color'
+    'shakram02.bash-beautify'
     'vscode-icons-team.vscode-icons'
 )
 
 for i in "${vscodeExtensions[@]}"; do
-  code --install-extension $i
+    code --install-extension $i
 done
 
 # terminator
@@ -67,7 +70,7 @@ nvm alias default v10.16.3
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-apt-get update && apt-get install yarn
+apt-get update && apt-get install yarn -y
 
 # simple screen recorder
 add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
@@ -79,7 +82,7 @@ apt-get install cmatrix -y
 
 # react-native-cli/watchman(inotify)
 npm install -g react-native-cli
-sudo apt-get install -y inotify-tools
+sudo apt-get install inotify-tools -y
 
 # java - jdk8
 add-apt-repository ppa:webupd8team/java -y
