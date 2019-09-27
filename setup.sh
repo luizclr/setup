@@ -45,6 +45,7 @@ vscodeExtensions=(
     'anseki.vscode-color'
     'shakram02.bash-beautify'
     'vscode-icons-team.vscode-icons'
+    'mikestead.dotenv'
 )
 
 for i in "${vscodeExtensions[@]}"; do
