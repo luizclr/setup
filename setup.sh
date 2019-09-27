@@ -46,6 +46,7 @@ vscodeExtensions=(
     'shakram02.bash-beautify'
     'vscode-icons-team.vscode-icons'
     'mikestead.dotenv'
+    'ldez.ignore-files'
 )
 
 for i in "${vscodeExtensions[@]}"; do
