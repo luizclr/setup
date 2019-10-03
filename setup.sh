@@ -16,10 +16,8 @@ apt install curl -y
 apt install git -y
 
 # chrome
-sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-apt update
-apt install google-chrome-stable -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 # snap
 apt get install snapd -y
@@ -30,7 +28,8 @@ snap install code --classic \
     discord \
     slack --classic
 
-declare -a vscodeExtensions=(
+# code extensions
+vscodeExtensions=(
     "dbaeumer.vscode-eslint"
     "MS-vsliveshare.vsliveshare"
     "esbenp.prettier-vscode"
@@ -49,6 +48,7 @@ declare -a vscodeExtensions=(
     "ms-azuretools.vscode-docker"
 )
 
+# install extensions
 for i in "${vscodeExtensions[@]}"; do
     code --install-extension $i
 done
