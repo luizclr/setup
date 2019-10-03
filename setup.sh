@@ -25,34 +25,28 @@ apt install google-chrome-stable -y
 apt get install snapd -y
 
 # snap apps
-declare -a snapApps=(
-    'code --classic'
-    'spotify'
-    'discord'
-    'slack --classic'
-)
-
-for i in "${snapApps[@]}"; do
-    snap install $i
-done
+snap install code --classic \
+    spotify \
+    discord \
+    slack --classic
 
 declare -a vscodeExtensions=(
-    'dbaeumer.vscode-eslint'
-    'MS-vsliveshare.vsliveshare'
-    'esbenp.prettier-vscode'
-    'shd101wyy.markdown-preview-enhanced'
-    'DavidAnson.vscode-markdownlint'
-    'EditorConfig.EditorConfig'
-    'Syler.sass-indented'
-    'msjsdiag.vscode-react-native'
-    'burkeholland.simple-react-snippets'
-    'ms-vscode.atom-keybindings'
-    'anseki.vscode-color'
-    'shakram02.bash-beautify'
-    'vscode-icons-team.vscode-icons'
-    'mikestead.dotenv'
-    'ldez.ignore-files'
-    'ms-azuretools.vscode-docke'
+    "dbaeumer.vscode-eslint"
+    "MS-vsliveshare.vsliveshare"
+    "esbenp.prettier-vscode"
+    "shd101wyy.markdown-preview-enhanced"
+    "DavidAnson.vscode-markdownlint"
+    "EditorConfig.EditorConfig"
+    "Syler.sass-indented"
+    "msjsdiag.vscode-react-native"
+    "burkeholland.simple-react-snippets"
+    "ms-vscode.atom-keybindings"
+    "anseki.vscode-color"
+    "shakram02.bash-beautify"
+    "vscode-icons-team.vscode-icons"
+    "mikestead.dotenv"
+    "ldez.ignore-files"
+    "ms-azuretools.vscode-docker"
 )
 
 for i in "${vscodeExtensions[@]}"; do
@@ -115,7 +109,7 @@ chmod +x virtualbox.run
 ./virtualbox.run
 
 # insomnia
-echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" |  tee -a /etc/apt/sources.list.d/insomnia.list
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | tee -a /etc/apt/sources.list.d/insomnia.list
 wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | apt-key add - -y
 
 # gimp
@@ -134,9 +128,8 @@ usermod -aG docker ${USER}
 usermod -aG docker ${USER}
 
 # Docker compose
-curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-
 
 # list programs
 clear
