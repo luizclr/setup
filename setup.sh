@@ -47,6 +47,7 @@ vscodeExtensions=(
     'vscode-icons-team.vscode-icons'
     'mikestead.dotenv'
     'ldez.ignore-files'
+    'ms-azuretools.vscode-docke'
 )
 
 for i in "${vscodeExtensions[@]}"; do
