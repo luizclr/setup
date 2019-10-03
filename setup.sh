@@ -24,7 +24,6 @@ apt get install snapd -y
 
 # snap apps
 snapApps=(
-    'code --classic'
     'spotify'
     'discord'
     'slack --classic'
@@ -33,6 +32,14 @@ snapApps=(
 for i in "${snapApps[@]}"; do
     snap install $i
 done
+
+# code
+apt update
+apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+apt update
+apt install code
 
 # code extensions
 vscodeExtensions=(
