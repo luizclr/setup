@@ -118,6 +118,20 @@ apt-get update
 apt-get install gimp gimp-gmic gmic -y
 apt-get install gimp-plugin-registry -y
 
+# Docker
+apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+apt update
+apt install docker-ce -y
+usermod -aG docker ${USER}
+usermod -aG docker ${USER}
+
+# Docker compose
+curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+
 # list programs
 clear
 (curl --version | grep "curl") && printf "\n"
@@ -135,3 +149,5 @@ printf "\n" && (cmatrix -V | grep "CMatrix") && printf "\n"
 (react-native --version | grep "react-native-cli:") && printf "\n"
 java -version && printf "\n"
 printf "gimp: " && gimp --version && printf "\n"
+printf "gimp: " && docker --version && printf "\n"
+printf "gimp: " && docker-compose --version && printf "\n"
