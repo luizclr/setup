@@ -15,11 +15,11 @@ cd setup
 Mark the file as executable by the `chmod` command.
 
 ```bash
-chmod +x setup.sh
+sudo chmod +x setup.sh
 ```
 
 Run the command
 
 ```bash
-./setup.sh
+sudo bash ./setup.sh
 ```

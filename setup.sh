@@ -16,17 +16,14 @@ apt install curl -y
 apt install git -y
 
 # chrome
-sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-apt update
-apt install google-chrome-stable -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 # snap
 apt get install snapd -y
 
 # snap apps
 snapApps=(
-    'code --classic'
     'spotify'
     'discord'
     'slack --classic'
@@ -36,25 +33,35 @@ for i in "${snapApps[@]}"; do
     snap install $i
 done
 
+# code
+apt update
+apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+apt update
+apt install code
+
+# code extensions
 vscodeExtensions=(
-    'dbaeumer.vscode-eslint'
-    'MS-vsliveshare.vsliveshare'
-    'esbenp.prettier-vscode'
-    'shd101wyy.markdown-preview-enhanced'
-    'DavidAnson.vscode-markdownlint'
-    'EditorConfig.EditorConfig'
-    'Syler.sass-indented'
-    'msjsdiag.vscode-react-native'
-    'burkeholland.simple-react-snippets'
-    'ms-vscode.atom-keybindings'
-    'anseki.vscode-color'
-    'shakram02.bash-beautify'
-    'vscode-icons-team.vscode-icons'
-    'mikestead.dotenv'
-    'ldez.ignore-files'
-    'ms-azuretools.vscode-docke'
+    "dbaeumer.vscode-eslint"
+    "MS-vsliveshare.vsliveshare"
+    "esbenp.prettier-vscode"
+    "shd101wyy.markdown-preview-enhanced"
+    "DavidAnson.vscode-markdownlint"
+    "EditorConfig.EditorConfig"
+    "Syler.sass-indented"
+    "msjsdiag.vscode-react-native"
+    "burkeholland.simple-react-snippets"
+    "ms-vscode.atom-keybindings"
+    "anseki.vscode-color"
+    "shakram02.bash-beautify"
+    "vscode-icons-team.vscode-icons"
+    "mikestead.dotenv"
+    "ldez.ignore-files"
+    "ms-azuretools.vscode-docker"
 )
 
+# install extensions
 for i in "${vscodeExtensions[@]}"; do
     code --install-extension $i
 done
@@ -115,7 +122,7 @@ chmod +x virtualbox.run
 ./virtualbox.run
 
 # insomnia
-echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" |  tee -a /etc/apt/sources.list.d/insomnia.list
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | tee -a /etc/apt/sources.list.d/insomnia.list
 wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | apt-key add - -y
 
 # gimp
@@ -134,9 +141,8 @@ usermod -aG docker ${USER}
 usermod -aG docker ${USER}
 
 # Docker compose
-curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-
 
 # list programs
 clear
