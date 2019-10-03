@@ -25,7 +25,7 @@ apt install google-chrome-stable -y
 apt get install snapd -y
 
 # snap apps
-snapApps=(
+declare -a snapApps=(
     'code --classic'
     'spotify'
     'discord'
@@ -36,7 +36,7 @@ for i in "${snapApps[@]}"; do
     snap install $i
 done
 
-vscodeExtensions=(
+declare -a vscodeExtensions=(
     'dbaeumer.vscode-eslint'
     'MS-vsliveshare.vsliveshare'
     'esbenp.prettier-vscode'
