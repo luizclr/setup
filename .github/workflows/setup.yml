@@ -14,5 +14,5 @@ jobs:
       run: sudo chmod +x setup.sh
 
     - name: Run the command
-      run: sudo ./setup.sh
+      run: sudo bash ./setup.sh
     

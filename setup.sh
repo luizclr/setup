@@ -23,10 +23,16 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 apt get install snapd -y
 
 # snap apps
-snap install code --classic \
-    spotify \
-    discord \
-    slack --classic
+snapApps=(
+    'code --classic'
+    'spotify'
+    'discord'
+    'slack --classic'
+)
+
+for i in "${snapApps[@]}"; do
+    snap install $i
+done
 
 # code extensions
 vscodeExtensions=(
