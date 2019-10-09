@@ -1,27 +1,29 @@
-apt-get update
-apt-get upgrade -y
+#bin/bash
+
+# Update Package List
+apt update
+
+# Update System Packages
+apt upgrade -y
 
 # exiftool
-apt-get install exiftool -y
+apt install exiftool -y
 
 # curl
-apt-get install curl -y
+apt install curl -y
 
 # git
-apt-get install git -y
+apt install git -y
 
 # chrome
-sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-apt-get update
-apt-get install google-chrome-stable -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 # snap
 apt get install snapd -y
 
 # snap apps
 snapApps=(
-    'code --classic'
     'spotify'
     'discord'
     'slack --classic'
@@ -31,35 +33,45 @@ for i in "${snapApps[@]}"; do
     snap install $i
 done
 
+# code
+apt update
+apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+apt update
+apt install code
+
+# code extensions
 vscodeExtensions=(
-    'dbaeumer.vscode-eslint'
-    'MS-vsliveshare.vsliveshare'
-    'esbenp.prettier-vscode'
-    'shd101wyy.markdown-preview-enhanced'
-    'DavidAnson.vscode-markdownlint'
-    'EditorConfig.EditorConfig'
-    'Syler.sass-indented'
-    'msjsdiag.vscode-react-native'
-    'burkeholland.simple-react-snippets'
-    'ms-vscode.atom-keybindings'
-    'anseki.vscode-color'
-    'shakram02.bash-beautify'
-    'vscode-icons-team.vscode-icons'
-    'mikestead.dotenv'
-    'ldez.ignore-files'
-    'ms-azuretools.vscode-docke'
+    "dbaeumer.vscode-eslint"
+    "MS-vsliveshare.vsliveshare"
+    "esbenp.prettier-vscode"
+    "shd101wyy.markdown-preview-enhanced"
+    "DavidAnson.vscode-markdownlint"
+    "EditorConfig.EditorConfig"
+    "Syler.sass-indented"
+    "msjsdiag.vscode-react-native"
+    "burkeholland.simple-react-snippets"
+    "ms-vscode.atom-keybindings"
+    "anseki.vscode-color"
+    "shakram02.bash-beautify"
+    "vscode-icons-team.vscode-icons"
+    "mikestead.dotenv"
+    "ldez.ignore-files"
+    "ms-azuretools.vscode-docker"
 )
 
+# install extensions
 for i in "${vscodeExtensions[@]}"; do
     code --install-extension $i
 done
 
 # terminator
-apt-get install terminator -y
+apt install terminator -y
 
 # skype
 wget https://go.skype.com/skypeforlinux-64.deb
-apt-get install ./skypeforlinux-64.deb
+apt install ./skypeforlinux-64.deb
 
 # nvm
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -73,36 +85,36 @@ nvm alias default v10.16.3
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-apt-get update && apt-get install yarn -y
+apt update && apt install yarn -y
 
 # simple screen recorder
 add-apt-repository ppa:maarten-baert/simplescreenrecorder -y
-apt-get update
-apt-get install simplescreenrecorder -y
+apt update
+apt install simplescreenrecorder -y
 
 #cmatrix
-apt-get install cmatrix -y
+apt install cmatrix -y
 
 # react-native-cli/watchman(inotify)
 npm install -g react-native-cli
-sudo apt-get install inotify-tools -y
+sudo apt install inotify-tools -y
 
 # java - jdk8
 add-apt-repository ppa:webupd8team/java -y
-apt-get update
+apt update
 apt install openjdk-8-jdk -y
 export JAVA_HOME=/usr/lib/jvm/java-8-*
 java -version
 
 # android studio
 add-apt-repository ppa:maarten-fonville/android-studio -y
-apt-get update
-apt-get install android-studio -y
+apt update
+apt install android-studio -y
 
 # anyDesk
 https://download.anydesk.com/linux/anydesk_5.1.1-1_amd64.deb -O anydesk.deb
 dpkg -i anydesk.deb
-apt-get install -f
+apt install -f
 
 # vitrualBox
 wget https://download.virtualbox.org/virtualbox/6.0.12/VirtualBox-6.0.12-133076-Linux_amd64.run -O virtualbox.run
@@ -110,14 +122,14 @@ chmod +x virtualbox.run
 ./virtualbox.run
 
 # insomnia
-echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" |  tee -a /etc/apt/sources.list.d/insomnia.list
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | tee -a /etc/apt/sources.list.d/insomnia.list
 wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | apt-key add - -y
 
 # gimp
 add-apt-repository ppa:otto-kesselgulasch/gimp -y
-apt-get update
-apt-get install gimp gimp-gmic gmic -y
-apt-get install gimp-plugin-registry -y
+apt update
+apt install gimp gimp-gmic gmic -y
+apt install gimp-plugin-registry -y
 
 # Docker
 apt install apt-transport-https ca-certificates curl software-properties-common -y
@@ -129,9 +141,8 @@ usermod -aG docker ${USER}
 usermod -aG docker ${USER}
 
 # Docker compose
-curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-
 
 # list programs
 clear
