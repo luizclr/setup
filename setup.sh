@@ -20,7 +20,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 # snap
-apt get install snapd -y
+apt-get install snapd -y
 
 # snap apps
 snapApps=(
@@ -132,12 +132,13 @@ apt install gimp gimp-gmic gmic -y
 apt install gimp-plugin-registry -y
 
 # Docker
+# take a look at the page bellow to configure docker on Deepin OS:
+# https://github.com/docker/for-linux/issues/413#issuecomment-485031392
 apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 apt update
 apt install docker-ce -y
-usermod -aG docker ${USER}
 usermod -aG docker ${USER}
 
 # Docker compose
