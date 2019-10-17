@@ -43,22 +43,23 @@ apt install code
 
 # code extensions
 vscodeExtensions=(
-    "dbaeumer.vscode-eslint"
-    "MS-vsliveshare.vsliveshare"
-    "esbenp.prettier-vscode"
-    "shd101wyy.markdown-preview-enhanced"
-    "DavidAnson.vscode-markdownlint"
-    "EditorConfig.EditorConfig"
-    "Syler.sass-indented"
-    "msjsdiag.vscode-react-native"
-    "burkeholland.simple-react-snippets"
-    "ms-vscode.atom-keybindings"
-    "anseki.vscode-color"
-    "shakram02.bash-beautify"
-    "vscode-icons-team.vscode-icons"
-    "mikestead.dotenv"
-    "ldez.ignore-files"
-    "ms-azuretools.vscode-docker"
+    'dbaeumer.vscode-eslint'
+    'MS-vsliveshare.vsliveshare'
+    'esbenp.prettier-vscode'
+    'shd101wyy.markdown-preview-enhanced'
+    'DavidAnson.vscode-markdownlint'
+    'EditorConfig.EditorConfig'
+    'Syler.sass-indented'
+    'msjsdiag.vscode-react-native'
+    'burkeholland.simple-react-snippets'
+    'ms-vscode.atom-keybindings'
+    'anseki.vscode-color'
+    'shakram02.bash-beautify'
+    'vscode-icons-team.vscode-icons'
+    'mikestead.dotenv'
+    'ldez.ignore-files'
+    'ms-azuretools.vscode-docke'
+    'ritwickdey.LiveServer'
 )
 
 # install extensions
