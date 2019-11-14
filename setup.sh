@@ -75,13 +75,13 @@ wget https://go.skype.com/skypeforlinux-64.deb
 apt install ./skypeforlinux-64.deb
 
 # nvm
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.31.1/install.sh | bash
 source ~/.bashrc
 
 # node/npm
-nvm install v10.16.3
-nvm use v10.16.3
-nvm alias default v10.16.3
+nvm install 10
+nvm install 12
+nvm alias default 12
 
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -96,10 +96,6 @@ apt install simplescreenrecorder -y
 #cmatrix
 apt install cmatrix -y
 
-# react-native-cli/watchman(inotify)
-npm install -g react-native-cli
-sudo apt install inotify-tools -y
-
 # java - jdk8
 add-apt-repository ppa:webupd8team/java -y
 apt update
@@ -111,6 +107,9 @@ java -version
 add-apt-repository ppa:maarten-fonville/android-studio -y
 apt update
 apt install android-studio -y
+apt install qemu-kvm -y
+adduser $USER kvm
+chown $USER /dev/kvm
 
 # anyDesk
 https://download.anydesk.com/linux/anydesk_5.1.1-1_amd64.deb -O anydesk.deb
@@ -141,10 +140,21 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bi
 apt update
 apt install docker-ce -y
 usermod -aG docker ${USER}
+su - ${USER}
 
 # Docker compose
 curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
+
+# postgresql
+apt install wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+apt update
+apt install postgresql postgresql-contrib -y
+
+# pgAdmin4
+apt install pgadmin4 pgadmin4-apache2
 
 # list programs
 clear
