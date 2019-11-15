@@ -130,6 +130,11 @@ chmod +x virtualbox.run
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | tee -a /etc/apt/sources.list.d/insomnia.list
 wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | apt-key add - -y
 
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" | tee -a /etc/apt/sources.list.d/insomnia.list
+wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc | apt-key add -
+sudo apt-get update
+sudo apt-get install insomnia
+
 # gimp
 add-apt-repository ppa:otto-kesselgulasch/gimp -y
 apt update
