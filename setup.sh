@@ -33,6 +33,11 @@ for i in "${snapApps[@]}"; do
     snap install $i
 done
 
+# telegram
+add-apt-repository ppa:atareao/telegram
+apt update
+apt-get install telegram
+
 # code
 apt update
 apt install software-properties-common apt-transport-https wget
