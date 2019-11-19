@@ -6,6 +6,10 @@ apt update
 # Update System Packages
 apt upgrade -y
 
+# git aliases
+cat teste.txt >> ~/.bashrc
+source ~/.bashrc
+
 # exiftool
 apt install exiftool -y
 
